@@ -1,0 +1,202 @@
+:root {
+  color-scheme: light dark;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+  background-image: url("green-background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.grandfather-clock {
+  width: 220px;
+  height: 420px;
+  padding: 16px 24px 24px;
+  border-radius: 60px 60px 12px 12px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12), transparent 40%, rgba(0, 0, 0, 0.35)),
+    repeating-linear-gradient(
+      90deg,
+      #6b4226,
+      #6b4226 4px,
+      #5a3821 4px,
+      #5a3821 8px
+    );
+  box-shadow:
+    0 22px 40px rgba(0, 0, 0, 0.6),
+    inset 0 0 12px rgba(0, 0, 0, 0.65);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: #222;
+  position: relative;
+  overflow: hidden;
+  transform: scale(1.75);
+  transform-origin: center;
+}
+
+.grandfather-clock::after {
+  /* fine film grain overlay */
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 60px 60px 12px 12px;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.24) 1px, transparent 0);
+  background-size: 3px 3px;
+  opacity: 0.18;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.clock-top {
+  display: flex;
+  justify-content: center;
+}
+
+.clock-face {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background:
+    url("vintage-clock2.png") center/cover no-repeat;
+  border: 4px solid #d2b48c;
+  box-shadow:
+    0 6px 10px rgba(0, 0, 0, 0.4),
+    inset 0 0 10px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.clock-face::before {
+  /* simple hour marks */
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  border: 2px dashed rgba(0, 0, 0, 0.3);
+}
+
+.hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: 50% 100%;
+  transform: rotate(0deg);
+  border-radius: 999px;
+}
+
+.hand.hour {
+  width: 6px;
+  height: 38px;
+  background: #333;
+}
+
+.hand.minute {
+  width: 4px;
+  height: 52px;
+  background: #333;
+}
+
+.hand.second {
+  width: 2px;
+  height: 60px;
+  background: #c02626;
+}
+
+.center-cap {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #333;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.clock-body {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 12px;
+}
+
+.pendulum {
+  position: relative;
+  width: 8px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center;
+  animation: swing 1s ease-in-out infinite alternate;
+}
+
+.pendulum-rod {
+  width: 3px;
+  flex: 1;
+  background: #e0d7c7;
+}
+
+.pendulum-bob {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 20%, #ffe99f, #c79b2a);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.35);
+  margin-top: 8px;
+}
+
+.clock-base {
+  width: 70%;
+  height: 28px;
+  margin-top: 8px;
+  border-radius: 6px;
+  background: #3b2112;
+  box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.clock-inscription {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Brush Script MT", "Lucida Handwriting", cursive;
+  font-size: 16px;
+  color: #f5f5dc;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.digital-time {
+  font-variant-numeric: tabular-nums;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+@keyframes swing {
+  from {
+    transform: rotate(-10deg);
+  }
+  to {
+    transform: rotate(10deg);
+  }
+}
